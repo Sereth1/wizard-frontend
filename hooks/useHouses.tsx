@@ -1,4 +1,3 @@
-// hooks/useHouses.ts
 "use client";
 
 import { useEffect, useState } from "react";
@@ -34,10 +33,12 @@ export function useHouses(query: string) {
 
   useEffect(() => {
     const fetchHouses = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const q = query.trim().length > 0 ? `?name=${query}` : "";
         const res = await fetch(`/api/get_houses${q}`);
-        if (!res.ok) throw new Error("Failed to fetch");
+        if (!res.ok) throw new Error("Failed to fetch houses");
         const data: House[] = await res.json();
         setHouses(data);
       } catch (err: unknown) {
