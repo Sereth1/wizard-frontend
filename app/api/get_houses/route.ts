@@ -5,14 +5,14 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const name = searchParams.get("name");
 
+  const baseUrl = process.env.URL;
+
   try {
     const res = await axios.get(
-      `https://wizard-backend-production.up.railway.app/houses${
-        name ? `?name=${name}` : ""
-      }`,
+      `${baseUrl}/houses${name ? `?name=${name}` : ""}`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+          Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
         },
       }
     );
