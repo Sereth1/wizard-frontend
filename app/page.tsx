@@ -30,14 +30,13 @@ export default function HousesPage() {
         <Spinner />
       ) : error ? (
         <p className="text-center text-white">{error}</p>
+      ) : houses.length === 0 ? (
+        <p className="text-center text-gray-400">Not found try again</p>
       ) : (
         houses.map((house) => (
           <HouseCard
             key={house.id}
-            name={house.name}
-            founder={house.founder}
-            animal={house.animal}
-            traits={house.traits}
+            {...house}
             nameColor={colorMap[house.name] || "#000"}
           />
         ))
