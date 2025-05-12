@@ -31,7 +31,7 @@ export default function HousesPage() {
       ) : error ? (
         <p className="text-center text-white">{error}</p>
       ) : houses.length === 0 ? (
-        <p className="text-center text-gray-400">Not found try again</p>
+        <p className="text-center text-white">Not found try again</p>
       ) : (
         houses.map((house) => (
           <HouseCard
